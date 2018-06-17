@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     ...
 ]
 
-EMAIL_BACKEND = 'django_q_email.backend.DjangoQBackend'
+EMAIL_BACKEND = 'django_q_email.backends.DjangoQBackend'
 ```
 
 Then send email in the normal way, as per the [Django email docs](https://docs.djangoproject.com/en/1.10/topics/email/),
