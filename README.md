@@ -18,12 +18,6 @@ $ pip install django-q-email
 Then in `settings.py`:
 
 ```python
-INSTALLED_APPS = [
-    ...
-    'django_q_email',
-    ...
-]
-
 EMAIL_BACKEND = 'django_q_email.backends.DjangoQBackend'
 ```
 
