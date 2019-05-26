@@ -9,7 +9,7 @@ def read(filename):
 
 setup(
     name='django-q-email',
-    version='2.0.0',
+    version='3.0.0',
     description='Queues the sending of email with Django Q.',
     long_description=__doc__,
     author='Joe Esposito',
