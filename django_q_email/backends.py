@@ -6,7 +6,9 @@ try:
     from django_q.tasks import async_task
 except ImportError:
     # Django Q < 1.0
-    from django_q.tasks import async as async_task
+    from django_q import tasks
+    # Use getattr to avoid SyntaxError: invalid syntax on Python 3.7+
+    async_task = getattr(tasks, 'async')
 
 
 EMAIL_BACKEND = getattr(
