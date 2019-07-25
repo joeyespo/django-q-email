@@ -2,6 +2,11 @@ Django Q Email Changelog
 ------------------------
 
 
+### Version 4.0.0 (2019-07-25)
+
+- Add `DJANGO_Q_EMAIL_ERROR_HANDLER` to handle errors
+
+
 ### Version 3.0.0 (2019-05-26)
 
 - **Python 3.7+ support**

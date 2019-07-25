@@ -29,6 +29,7 @@ Configuration
 -------------
 
 `DJANGO_Q_EMAIL_BACKEND` - Backend used in the background task (default: `django.core.mail.backends.smtp.EmailBackend`)
+`DJANGO_Q_EMAIL_ERROR_HANDLER` - Optional function to be called if sending fails (called as `DJANGO_Q_EMAIL_ERROR_HANDLER(email_message, exception)`)
 
 
 Requirements
