@@ -16,6 +16,9 @@ EMAIL_BACKEND = getattr(
     'django.core.mail.backends.smtp.EmailBackend')
 
 
+EMAIL_ERROR_HANDLER = getattr(settings, 'DJANGO_Q_EMAIL_ERROR_HANDLER', None)
+
+
 class DjangoQBackend(BaseEmailBackend):
     def send_messages(self, email_messages):
         num_sent = 0
@@ -31,9 +34,14 @@ def send_message(email_message):
 
     Use DjangoQBackend to send in the background.
     """
-    connection = email_message.connection
-    email_message.connection = get_connection(backend=EMAIL_BACKEND)
     try:
-        email_message.send()
-    finally:
-        email_message.connection = connection
+        connection = email_message.connection
+        email_message.connection = get_connection(backend=EMAIL_BACKEND)
+        try:
+            email_message.send()
+        finally:
+            email_message.connection = connection
+    except Exception as ex:
+        if not EMAIL_ERROR_HANDLER:
+            raise
+        EMAIL_ERROR_HANDLER(email_message, ex)
