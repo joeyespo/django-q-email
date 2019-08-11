@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.core.mail import get_connection
 from django.core.mail.backends.base import BaseEmailBackend
+from django.utils.module_loading import import_string
 
 try:
     from django_q.tasks import async_task
@@ -44,4 +45,5 @@ def send_message(email_message):
     except Exception as ex:
         if not EMAIL_ERROR_HANDLER:
             raise
-        EMAIL_ERROR_HANDLER(email_message, ex)
+        email_error_handler = import_string(EMAIL_ERROR_HANDLER)
+        email_error_handler(email_message, ex)
