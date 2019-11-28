@@ -2,7 +2,12 @@ Django Q Email Changelog
 ------------------------
 
 
-#### Version 5.0.0 (2019-11-28)
+#### Version 5.0.1 (2019-11-28)
+
+- Fix configuration and set `DJANGO_Q_EMAIL_USE_DICTS` to `True` by default
+
+
+### Version 5.0.0 (2019-11-28)
 
 - Enqueue human-readable objects by default instead of pickled objects (set `DJANGO_Q_EMAIL_USE_DICTS` to `False` to disable)
 
