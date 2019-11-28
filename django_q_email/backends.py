@@ -14,12 +14,10 @@ except ImportError:
     async_task = getattr(tasks, 'async')
 
 
-DEFAULT_EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_BACKEND = getattr(
-    settings, 'DJANGO_Q_EMAIL_BACKEND', DEFAULT_EMAIL_BACKEND)
+DEFAULT_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = getattr(settings, 'DJANGO_Q_EMAIL_BACKEND', DEFAULT_BACKEND)
 EMAIL_ERROR_HANDLER = getattr(settings, 'DJANGO_Q_EMAIL_ERROR_HANDLER', None)
-DJANGO_Q_EMAIL_USE_DICTS = getattr(
-    settings, 'DJANGO_Q_EMAIL_DJANGO_Q_EMAIL_USE_DICTS', False)
+DJANGO_Q_EMAIL_USE_DICTS = getattr(settings, 'DJANGO_Q_EMAIL_USE_DICTS', True)
 
 
 class DjangoQBackend(BaseEmailBackend):
