@@ -22,13 +22,14 @@ EMAIL_BACKEND = 'django_q_email.backends.DjangoQBackend'
 ```
 
 Then send email in the normal way, as per the [Django email docs](https://docs.djangoproject.com/en/1.10/topics/email/),
-and they will be sent in a background task. [See Django Q for more info](https://github.com/Koed00/django-q).
+and they will be sent in a background task. See Django Q for more information](https://github.com/Koed00/django-q).
 
 
 Configuration
 -------------
 
 `DJANGO_Q_EMAIL_BACKEND` - Backend used in the background task (default: `django.core.mail.backends.smtp.EmailBackend`)
+`DJANGO_Q_EMAIL_USE_DICTS` - Store Python dictionaries instead of pickled `EmailMessage` and `EmailMultiAlternatives` (default: `True`)
 `DJANGO_Q_EMAIL_ERROR_HANDLER` - Optional function to be called if sending fails (called as `DJANGO_Q_EMAIL_ERROR_HANDLER(email_message, exception)`)
 
 
