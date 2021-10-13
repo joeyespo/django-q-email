@@ -20,6 +20,7 @@ def to_dict(email_message):
     }
     if isinstance(email_message, EmailMultiAlternatives):
         email_message_data['alternatives'] = email_message.alternatives
+        email_message_data['content_subtype'] = getattr(email_message, 'content_subtype', None)
     return email_message_data
 
 
@@ -30,6 +31,10 @@ def from_dict(email_message_data):
     """
     kwargs = dict(email_message_data)
     alternatives = kwargs.pop('alternatives', None)
-    return (
+    content_subtype = kwargs.pop('content_subtype', None)
+    email = (
         EmailMessage(**kwargs) if not alternatives else
         EmailMultiAlternatives(alternatives=alternatives, **kwargs))
+    if content_subtype:
+        email.content_subtype = content_subtype
+    return email
